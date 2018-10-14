@@ -20,6 +20,11 @@ namespace MathFormulaAjax.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<IndependentVariable> IndependentVariables { get; set; }
+        public DbSet<Response> Responses { get; set; }
+        public DbSet<MathFunction> MathFunctions { get; set; }
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

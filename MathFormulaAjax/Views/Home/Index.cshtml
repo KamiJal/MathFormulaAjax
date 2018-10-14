@@ -1,31 +1,57 @@
-﻿@{
+﻿@model MathFormulaAjax.ViewModels.MathFormulaViewModel
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<section class="page-header">
+    <h1>HTML 5</h1>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <p>Переключить вид: <button id ="btnToggleSelectorType" class="btn btn-info">списки</button></p>
+
+    <p class="h4">ASP.NET MVC platform</p>
+
+    <div class="alert alert-info">Представленный функционал реализован на HTML 5 с использованием современной технологией разработки – шаблон MVVM (knockoutjs)</div>
+</section>
+
+<section>
+
+    <div id="textarea">
+        <p><strong>Y=</strong></p>
+        <textarea id="input" rows="7" cols="37"></textarea>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <br />
+
+    <div id="selectors" class="row">
+
+        <div class="col-md-4">
+            <div class="col-md-6">
+                <p><strong>Independent Variables</strong></p>
+                @Html.DropDownList("IV", new SelectList(Model.IndependentVariables, "id", "Name"), "--- выбрать ---", new { @class = "form-control", size = 0 })
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="col-md-6">
+                <p><strong>Responses</strong></p>
+                @Html.DropDownList("R", new SelectList(Model.Responses, "id", "Name"), "--- выбрать ---", new { @class = "form-control", size = 0 })
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="col-md-6">
+                <p><strong>Math Functions</strong></p>
+                @Html.DropDownList("MF", new SelectList(Model.MathFunctions, "id", "Name"), "--- выбрать ---", new { @class = "form-control", size = 0 })
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+
+</section>
+
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.indexLogic.js"></script>
+}
